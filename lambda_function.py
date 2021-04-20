@@ -4,8 +4,7 @@ import qrcode
 
 
 def handler(event, context):
-    data = 'https://www.youtube.com'
-    img = qrcode.make(data)
+    img = qrcode.make(event.get('data', ''))
     buff = BytesIO()
     img.save(buff, format='JPEG')
     img_b64encoded = base64.b64encode(buff.getvalue()).decode('utf-8')
