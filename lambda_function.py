@@ -24,5 +24,5 @@ def handler(event, context):
 
 
 if __name__ == "__main__":
-    out = handler('', '')
+    out = handler({'data': 'https://www.google.com'}, '')
     print(out)
