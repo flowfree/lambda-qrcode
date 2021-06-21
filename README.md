@@ -35,14 +35,22 @@ Build the Docker container on the local machine
             'body': <base64 encoded image data>
         }
 
-Upload the Image to AWS ECR
----------------------------
+Deploy the Image to Amazon ECR
+------------------------------
+
+1.  Authenticate the Docker CLI to your Amazon ECR registry:
 
         aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account number>.dkr.ecr.<region>.amazonaws.com
 
+2.  Create a repository in Amazon ECR:
+
         aws ecr create-repository --repository-name lambda-qrcode --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
 
+3.  Tag the previously built image to match with the repository name:
+
         docker tag lambda-qrcode:latest <account number>.dkr.ecr.<region>.amazonaws.com/lambda-qrcode:latest
+
+4.  Deploy the image to Amazon ECR:
 
         docker push <account number>.dkr.ecr.<region>.amazonaws.com/lambda-qrcode:latest
 
