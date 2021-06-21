@@ -2,6 +2,11 @@ lambda-qrcode
 =============
 AWS Lambda function for generating QR code images.
 
+Prerequisites
+-------------
+1. AWS CLI
+2. Docker
+
 Build the Docker container
 --------------------------
 
