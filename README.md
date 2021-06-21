@@ -67,7 +67,7 @@ Deploy the Image to Amazon ECR
 
 Update the User Permissions
 ---------------------------
-The user or role that creates the function needs to have the `GetRepositoryPolicy`, `SetRepositoryPolicy`, and `InitiateLayerUpload` policies:
+The user or role that creates the Lambda function later needs to have the `GetRepositoryPolicy`, `SetRepositoryPolicy`, and `InitiateLayerUpload` policies:
 
         {
           "Version": "2012-10-17",
