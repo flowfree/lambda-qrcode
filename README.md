@@ -2,8 +2,8 @@ lambda-qrcode
 =============
 AWS Lambda function for generating QR code images.
 
-Build the Docker container on the local machine
------------------------------------------------
+Build the Docker container
+--------------------------
 
 1.  Download the code:
 
@@ -20,7 +20,8 @@ Build the Docker container on the local machine
 
 4.  Make POST request to test the code:
 
-        curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{"data":"https://www.google.com"}'
+        curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+             -d '{"data":"https://www.google.com"}'
 
     It will return JSON response like this:
 
@@ -40,11 +41,15 @@ Deploy the Image to Amazon ECR
 
 1.  Authenticate the Docker CLI to your Amazon ECR registry:
 
-        aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com
+        aws ecr get-login-password --region <region> | \
+        docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com
 
 2.  Create a repository in Amazon ECR:
 
-        aws ecr create-repository --repository-name lambda-qrcode --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
+        aws ecr create-repository \
+            --repository-name lambda-qrcode \
+            --image-scanning-configuration scanOnPush=true \
+            --image-tag-mutability MUTABLE
 
 3.  Tag the previously built image to match with the repository name:
 
