@@ -78,7 +78,7 @@ The user or role that creates the Lambda function later needs to have the `GetRe
               "Action": [
                 "ecr:SetRepositoryPolicy",
                 "ecr:GetRepositoryPolicy",
-                "ecr:InitiateLayerUpload
+                "ecr:InitiateLayerUpload"
               ],
               "Resource": "arn:aws:ecr:<region>:<account>:repository/<repo name>/"
             }
